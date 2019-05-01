@@ -17,6 +17,23 @@ if(newApiName[newApiName.length - 1] !== 's') {
 // Defines singular name
 const newApiSingular = newApiName.substr(0, newApiName.length - 1)
 
+// Creats new directories if needed
+if (!shell.test("-d", "./test")) {
+	shell.mkdir("test")
+}
+
+if (!shell.test("-d", "./test/useCases")) {
+	shell.mkdir("test/useCases")
+}
+
+if (!shell.test("-d", "./validators")) {
+	shell.mkdir("validators")
+}
+
+if (!shell.test("-d", "./sanitizers")) {
+	shell.mkdir("sanitizers")
+}
+
 
 // Creates new files for the new API //
 
