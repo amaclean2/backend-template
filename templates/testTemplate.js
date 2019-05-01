@@ -3,14 +3,14 @@ const
 	chai = require('chai'),
 	chaiHttp = require('chai-http'),
 	portId = require('../pathDescription').portId,
-	mongodb = require('mongodb'),
-	url = require('../pathDescription').pathName,
+	// mongodb = require('mongodb'),
+	// url = require('../pathDescription').pathName,
 	useCases = require(`./useCases/${service}`),
-	MongoClient = mongodb.MongoClient,
+	// MongoClient = mongodb.MongoClient,
 	should = chai.should()
 
 let
-	db,
+	// db,
 	lookupId,
 	pathString = `http://localhost:${portId}/api`
 
@@ -31,7 +31,8 @@ const clearDb = done => {
 
 describe(service, () => {
 	before( done => {
-		clearDb(done)
+		// clearDb(done)
+		done()
 	})
 	
 	// Testing GET request
@@ -56,7 +57,7 @@ describe(service, () => {
 				.post(`/${service}`)
 				.send(item.body)
 				.end( (error, response) => {
-					lookupId = response.body && response.body.data && response.body.data._id
+					// lookupId = response.body && response.body.data && response.body.data._id
 					item.checks(response, should)
 					done()
 				})
@@ -70,7 +71,7 @@ describe(service, () => {
 			it(item.description, done => {
 
 				const checkId = item.checkId === "id"
-					? lookupId
+					? "0"
 					: item.checkId
 
 				chai.request(pathString)
@@ -88,7 +89,7 @@ describe(service, () => {
 		useCases.put.forEach( item => {
 			it(item.description, done => {
 
-				if (item.body._id) item.body._id = lookupId;
+				if (item.body.id) item.body.id = lookupId;
 				
 				chai.request(pathString)
 				.put(`/${service}`)
@@ -107,7 +108,7 @@ describe(service, () => {
 			it(item.description, done => {
 				
 				const checkId = item.checkId === "id"
-					? lookupId
+					? "0"
 					: item.checkId
 				
 				chai.request(pathString)

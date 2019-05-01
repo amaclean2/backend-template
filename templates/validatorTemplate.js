@@ -1,5 +1,7 @@
 module.exports.validatePost = body => {
     switch(true) {
+		// case !body.username :
+		// 	return "username field required"
         default :
             return true;
     }
@@ -7,14 +9,9 @@ module.exports.validatePost = body => {
 
 module.exports.validatePut = body => {
     switch(true) {
+        case !body.id :
+            return "id field required"
         default :
             return true;
     }
-}
-
-module.exports.validateDelete = body => {
-	switch(true) {
-		default :
-			return true;
-	}
 }

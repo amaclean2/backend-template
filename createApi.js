@@ -44,6 +44,9 @@ shell.cp("./templates/useCaseTemplate.js", `./test/useCases/${newApiName}.js`)
 // Create new validator file
 shell.cp("./templates/validatorTemplate.js", `./validators/${newApiName}.js`)
 
+// Create new sanitizer file
+shell.cp("./templates/sanitizerTemplate.js", `./sanitizers/${newApiName}.js`)
+
 //
 
 
@@ -53,4 +56,4 @@ shell
 	.cat("./controllers/index.js")
 	.to("./controllers/index.js")
 
-shell.sed("-i", "}", `\t${newApiName}.set(app, db)\n}`, "./controllers/index.js");
+shell.sed("-i", "}", `\t${newApiName}.set(app)\n}`, "./controllers/index.js");

@@ -14,14 +14,14 @@ exports.post = [
         description: "Testing an empty body on a POST request",
         body: {},
         checks: (response, should) => {
-            response.should.have.status(204)
+            response.should.have.status(206)
             response.body.should.be.a("object")
             response.body.should.be.empty
         }
     }, {
         description: "Testing just a single field on a POST request",
         body: {
-            // Enter a field from the body
+            id: "123"
         }, checks: (response, should) => {
             response.should.have.status(206)
             response.body.should.be.a("object")
@@ -58,14 +58,14 @@ exports.put = [
         description: "Testing a PUT request with no body",
         body: {},
         checks: (response, should) => {
-            response.should.have.status(204)
+            response.should.have.status(206)
             response.body.should.be.a("object")
             response.body.should.be.empty
         }
     }, {
         description: "Testing an incomplete PUT body",
         body: {
-            _id: "12345"
+            id: "12345"
             /*
                 Enter the correct information for a put body
             */
