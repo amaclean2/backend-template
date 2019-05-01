@@ -24,7 +24,8 @@ app.use((request, response, next) => {
 
 const server = app.listen(portId, () => {
 	const port = server.address().port
-	console.log("\x1b[0m%s\x1b[36m%s\x1b[0m", "App running on port ", port, "\n")
+	console.log("\x1b[0m%s\x1b[36m%s\x1b[0m", "App running on port ", port)
+	console.log("\x1b[36m%s\x1b[0m", `http://localhost:${port}`, "\n")
 })
 
 controllers.set(app)
